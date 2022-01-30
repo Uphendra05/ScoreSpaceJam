@@ -14,6 +14,6 @@ public class Riser : MonoBehaviour
     void Update()
     {
         Mathf.PerlinNoise(transform.position.x, transform.position.y) ;
-        transform.localScale = new Vector3(0.4f, (Mathf.Sin(Time.time) * randomOffset + 0.5f), 0.4f);
+        transform.localScale = new Vector3(0.7f, (Mathf.Sin(Time.time) * randomOffset + 0.5f), 0.7f);
     }
 }
