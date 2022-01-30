@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
    [HideInInspector] public GameObject toBuildPrefab;
     public List<GameObject> allBlockPrefab = new List<GameObject>();
     public int normalBrickCount = 8;
+    public int timeBrickCount = 5;
+    public int slowBrickCount = 3;
+
+
     //public int BrickOneCount = 5;
     //public int BrickTwoCount = 3;
     public int coinCount;
@@ -19,8 +23,10 @@ public class GameManager : MonoBehaviour
     public bool blockTwoUnlocked;
 
     public int ballBounceCountNormal;
+    
+    public int index;
 
-
+    public int totalBallCount;
 
     private void Awake()
     {
@@ -44,11 +50,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-        if(ballBounceCountNormal >= 10)
-        {
-            allBlockPrefab[0].GetComponent<BlockHealth>().maxCount = 6;
-
-        }
+       
         
     }
 }

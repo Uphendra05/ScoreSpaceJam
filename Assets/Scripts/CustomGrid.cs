@@ -34,7 +34,7 @@ public class CustomGrid : MonoBehaviour
             Debug.DrawRay(Camera.main.ScreenPointToRay(Input.mousePosition).origin, Camera.main.ScreenPointToRay(Input.mousePosition).direction*100f,Color.red);
             structure.GetComponent<MeshRenderer>().enabled = true;
             //if(Physics.sphere)
-            if (hit.collider.CompareTag("Block")|| EventSystem.current.IsPointerOverGameObject())
+            if (hit.collider.CompareTag("Block")|| EventSystem.current.IsPointerOverGameObject()||hit.collider.CompareTag("SlowBlock")|| hit.collider.CompareTag("TimeBlock"))
             {
                 Debug.Log("Block is inbetween");
                 structure.GetComponent<MeshRenderer>().enabled = false;
@@ -61,16 +61,37 @@ public class CustomGrid : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             { 
-                if (CheckCube.isAvailable && GameManager.instance.normalBrickCount > 0)
+                if (CheckCube.isAvailable && GameManager.instance.index == 0 || GameManager.instance.index == 1 || GameManager.instance.index == 2)
                 {
-                   GameObject temp = Instantiate(GameManager.instance.toBuildPrefab, new Vector3(structure.transform.position.x,-4.6f, structure.transform.position.z), structure.transform.rotation, blockParent);
 
-                    if (GameManager.instance.ballBounceCountNormal >= 10)
+                    if (GameManager.instance.normalBrickCount>0 && GameManager.instance.index == 0)
                     {
-                        temp.GetComponent<BlockHealth>().maxCount = 6;
+                        GameObject temp = Instantiate(GameManager.instance.toBuildPrefab, new Vector3(structure.transform.position.x, -4.6f, structure.transform.position.z), structure.transform.rotation, blockParent);
+                        GameManager.instance.normalBrickCount--;
 
                     }
-                    GameManager.instance.normalBrickCount--;
+
+                    if (GameManager.instance.timeBrickCount > 0 && GameManager.instance.index == 1)
+                    {
+                        GameObject temp = Instantiate(GameManager.instance.toBuildPrefab, new Vector3(structure.transform.position.x, -4.6f, structure.transform.position.z), structure.transform.rotation, blockParent);
+                        GameManager.instance.timeBrickCount--;
+
+                    }
+
+                    if (GameManager.instance.slowBrickCount > 0 && GameManager.instance.index == 2)
+                    {
+                        GameObject temp = Instantiate(GameManager.instance.toBuildPrefab, new Vector3(structure.transform.position.x, -4.6f, structure.transform.position.z), structure.transform.rotation, blockParent);
+                        GameManager.instance.slowBrickCount--;
+
+                    }
+
+
+
+                  
+                   
+
+
+
                 }
             }   
             //sphere cast

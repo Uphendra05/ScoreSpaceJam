@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 3981682660695671513}
   - component: {fileID: -8760517873179497972}
   - component: {fileID: -5607738036811186007}
+  - component: {fileID: 7672023065623479974}
   m_Layer: 8
-  m_Name: BlockPrefab
+  m_Name: MainBlock
   m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,6 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthCount: 0
+  maxCount: 6
   timeToLerp: 10
   canScale: 1
   targetScale: {x: 0.7, y: 0.7, z: 5.6}
@@ -127,3 +129,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7672023065623479974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3981682660695671514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66eb5c9ea8ec4454e9de4d5cb5b60cb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: -8760517873179497972}
+  defaultColor: {r: 0, g: 2.9960787, b: 1.6784314, a: 1}
+  blinkColor: {r: 0.01260054, g: 0, b: 0.6509804, a: 1}
+  meshRenderer: {fileID: 0}
+  defaultIntensityMultiplier: 1.1
+  blinkIntensityMultiplier: 0.55

@@ -81,32 +81,17 @@ public class BallMovement : MonoBehaviour
         }
     }
 
-    //public IEnumerator HitSlowBlock(float slowSpeed, Material slowBallMaterial, float timer)
-    //{
-    //    float currentSpeed = 6;
-    //    speed = slowSpeed;
-
-    //    Material defaultMat = GetComponent<MeshRenderer>().material;
-    //    GetComponent<MeshRenderer>().material = slowBallMaterial;
-
-    //    yield return new WaitForSeconds(timer);
-
-    //    speed = currentSpeed;
-    //    GetComponent<MeshRenderer>().material = defaultMat;
-    //    StopCoroutine(HitSlowBlock(slowSpeed, slowBallMaterial, timer));
-    //}
-
+    
 
 
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Block"))
+        if(other.gameObject.CompareTag("Block")|| other.gameObject.CompareTag("SlowBlock")|| other.gameObject.CompareTag("TimeBlock"))
         {
           
             bounceCount--;
-            GameManager.instance.ballBounceCountNormal++;
 
             if (bounceCount == 0)
             {
@@ -118,9 +103,18 @@ public class BallMovement : MonoBehaviour
                 Vector3 reflectRay = Vector3.Reflect(dir, collisionNormal);
                 float rot = 90 - Mathf.Atan2(reflectRay.z, reflectRay.x) * Mathf.Rad2Deg;               
                 Instantiate(GameManager.instance.ball, transform.position, Quaternion.Euler(transform.rotation.x, transform.rotation.y * rot, transform.rotation.z));
+                GameManager.instance.totalBallCount++;
 
             }
         }
+
+        if (other.gameObject.CompareTag("Death"))
+        {
+            Destroy(this.gameObject);
+            GameManager.instance.totalBallCount--;
+
+        }
+
     }
     
 

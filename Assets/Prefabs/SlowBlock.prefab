@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6160238052109850803}
   m_Layer: 8
   m_Name: SlowBlock
-  m_TagString: Block
+  m_TagString: SlowBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,4 +143,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slowSpeed: 2.5
   waitTime: 3
+  isSlowed: 0
   slowBallMaterial: {fileID: 2100000, guid: a1daa21a3f97a9943a010cc69ec5f518, type: 2}
+  health: {fileID: -8760517873179497972}
+  defaultColor: {r: 0.047058824, g: 0, b: 2.9960785, a: 1}
+  meshRenderer: {fileID: 0}
+  defaultIntensityMultiplier: 1.1
+  blinkIntensityMultiplier: 0.55

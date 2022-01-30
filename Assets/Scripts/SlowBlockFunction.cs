@@ -9,32 +9,65 @@ public class SlowBlockFunction : MonoBehaviour
     public bool isSlowed = false;
 
     public Material slowBallMaterial;
+    public BlockHealth health;
 
-   
+    [ColorUsage(true, true)]
+    public Color defaultColor;
+
+    public MeshRenderer meshRenderer;
+
+    public float defaultIntensityMultiplier = 1.5f;
+    public float blinkIntensityMultiplier = 1.25f;
+
+    private void Start()
+    {
+        meshRenderer = GetComponent<MeshRenderer>();
+        Debug.Log(meshRenderer.material.GetColor("_EmissionColor"));
+
+        meshRenderer.material.SetColor("_EmissionColor", defaultColor * defaultIntensityMultiplier);
+    }
+
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Ball"))
+        if (collision.gameObject.CompareTag("Ball") && gameObject.CompareTag("SlowBlock") )
         {
             BallMovement balls = collision.GetComponent<BallMovement>();
-            if(!balls.isSlowed)
+            BlinkColor();
+            if (!balls.isSlowed)
             {
                 balls.isSlowed = true;
             }
-           
+            health.healthCount--;
+
+            if (health.healthCount == 0)
+            {
+                
+                GameManager.instance.slowBrickCount++;             
+
+
+            }
+
         }
     }
 
-    //IEnumerator SlowFunction(BallMovement ball, float timer)
-    //{
-    //    float currentSpeed = 6;
-    //    ball.speed = slowSpeed;
+    public void BlinkColor()
+    {
 
-    //    Material defaultMat = ball.GetComponent<MeshRenderer>().material;
-    //    ball.GetComponent<MeshRenderer>().material = slowBallMaterial;
+        float emissiveIntensity = defaultIntensityMultiplier;
 
-    //    yield return new WaitForSeconds(timer);
 
-    //    ball.speed = currentSpeed;
-    //    ball.GetComponent<MeshRenderer>().material = defaultMat;
-    //}
+        Timer.Periodic(0.1f, 7, () =>
+        {
+
+
+            meshRenderer.material.SetColor("_EmissionColor", defaultColor * emissiveIntensity);
+            emissiveIntensity = (emissiveIntensity == defaultIntensityMultiplier) ? blinkIntensityMultiplier : defaultIntensityMultiplier;
+
+
+        });
+
+
+    }
+
+
 }

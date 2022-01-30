@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7527882925794855399}
   m_Layer: 8
   m_Name: TimeBlock
-  m_TagString: Block
+  m_TagString: TimeBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145,3 +145,8 @@ MonoBehaviour:
   timeToLerp: 10
   canScale: 1
   targetScale: {x: 0.7, y: 0.7, z: 5.6}
+  isDestroyed: 1
+  defaultColor: {r: 2.9960787, g: 0.37647057, b: 0, a: 1}
+  meshRenderer: {fileID: 0}
+  defaultIntensityMultiplier: 1.1
+  blinkIntensityMultiplier: 0.55

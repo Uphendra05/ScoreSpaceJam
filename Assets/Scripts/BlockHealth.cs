@@ -44,17 +44,17 @@ public class BlockHealth : MonoBehaviour
     }
 
     
-    private void OnTriggerEnter(Collider collision)
-    {
-        if(collision.gameObject.CompareTag("Ball"))
-        {
-            healthCount--;
+    //private void OnTriggerEnter(Collider collision)
+    //{
+    //    if(collision.gameObject.CompareTag("Ball"))
+    //    {
+    //        healthCount--;
 
-            if (healthCount == 0)
-            {
-                GameManager.instance.normalBrickCount++;
-            }
-        }
-    }
+    //        if (healthCount == 0)
+    //        {
+    //            GameManager.instance.normalBrickCount++;
+    //        }
+    //    }
+    //}
 
 }

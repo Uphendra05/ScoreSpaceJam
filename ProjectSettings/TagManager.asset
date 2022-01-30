@@ -7,6 +7,9 @@ TagManager:
   - Block
   - Ball
   - Brick
+  - Death
+  - SlowBlock
+  - TimeBlock
   layers:
   - Default
   - TransparentFX
