@@ -17,7 +17,6 @@ public class BlockHealth : MonoBehaviour
     void Start()
     {
         healthCount = maxCount;
-
      
     }
 
@@ -34,8 +33,6 @@ public class BlockHealth : MonoBehaviour
         if(canScale)
         {
             transform.localScale = Vector3.Lerp(transform.localScale, targetScale, timeToLerp * Time.deltaTime);
-            
-           
         }
 
         
@@ -43,10 +40,7 @@ public class BlockHealth : MonoBehaviour
 
     public void BlockDie()
     {
-
-      
         Destroy(this.gameObject,1f);
-
     }
 
     
@@ -58,20 +52,9 @@ public class BlockHealth : MonoBehaviour
 
             if (healthCount == 0)
             {
-              
                 GameManager.instance.normalBrickCount++;
-               
             }
-
-
-
-
-
         }
     }
-
-    
-       
-    
 
 }

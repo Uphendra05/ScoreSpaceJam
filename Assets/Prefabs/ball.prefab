@@ -102,6 +102,10 @@ MonoBehaviour:
   timeToLerp: 3
   canScale: 1
   targetScale: {x: 0.65, y: 0.65, z: 0.65}
+  isSlowed: 0
+  slowTimer: 3
+  defaultBallMaterial: {fileID: 2100000, guid: b8ef794e0a7791345823457e96bdc7f1, type: 2}
+  slowBallMaterial: {fileID: 2100000, guid: a1daa21a3f97a9943a010cc69ec5f518, type: 2}
 --- !u!65 &5726003335701089438
 BoxCollider:
   m_ObjectHideFlags: 0

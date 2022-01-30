@@ -11,6 +11,13 @@ public class BallMovement : MonoBehaviour
     public float timeToLerp = 0.25f;
     public bool canScale = true;
     public Vector3 targetScale;
+    public bool isSlowed = false;
+    public float slowTimer = 3f;
+
+    public Material defaultBallMaterial;
+    public Material slowBallMaterial;
+
+
 
     void Start()
     {
@@ -25,6 +32,15 @@ public class BallMovement : MonoBehaviour
             transform.localScale = Vector3.Lerp(transform.localScale, targetScale, timeToLerp * Time.deltaTime);
 
 
+        }
+
+        SlowBall();
+
+        //test
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            speed = 5f;
         }
     }
 
@@ -44,6 +60,45 @@ public class BallMovement : MonoBehaviour
         
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }
+
+    public void SlowBall()
+    {
+        if (isSlowed)
+        {
+            if (slowTimer <= 0)
+            {
+                slowTimer = 3f;
+                isSlowed = false;
+                speed = 5f;
+                GetComponent<MeshRenderer>().material = defaultBallMaterial;
+            }
+            else
+            {
+                slowTimer -= Time.deltaTime;
+                speed = 2.5f;
+                GetComponent<MeshRenderer>().material = slowBallMaterial;
+            }
+        }
+    }
+
+    //public IEnumerator HitSlowBlock(float slowSpeed, Material slowBallMaterial, float timer)
+    //{
+    //    float currentSpeed = 6;
+    //    speed = slowSpeed;
+
+    //    Material defaultMat = GetComponent<MeshRenderer>().material;
+    //    GetComponent<MeshRenderer>().material = slowBallMaterial;
+
+    //    yield return new WaitForSeconds(timer);
+
+    //    speed = currentSpeed;
+    //    GetComponent<MeshRenderer>().material = defaultMat;
+    //    StopCoroutine(HitSlowBlock(slowSpeed, slowBallMaterial, timer));
+    //}
+
+
+
+
 
     private void OnTriggerEnter(Collider other)
     {

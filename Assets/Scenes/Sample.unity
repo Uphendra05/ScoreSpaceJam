@@ -4973,7 +4973,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1062, y: -390}
+  m_AnchoredPosition: {x: 863, y: -390}
   m_SizeDelta: {x: -1754.0332, y: -810.38983}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &592992667
@@ -12979,6 +12979,10 @@ MonoBehaviour:
   timeToLerp: 10
   canScale: 1
   targetScale: {x: 0.65, y: 0.65, z: 0.65}
+  isSlowed: 0
+  slowTimer: 3
+  defaultBallMaterial: {fileID: 2100000, guid: b8ef794e0a7791345823457e96bdc7f1, type: 2}
+  slowBallMaterial: {fileID: 2100000, guid: a1daa21a3f97a9943a010cc69ec5f518, type: 2}
 --- !u!23 &1554852439
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16470,8 +16474,8 @@ MonoBehaviour:
   - {fileID: 3981682660695671514, guid: 088ee66db9685814ab0ea732b7a4a216, type: 3}
   - {fileID: 3981682660695671514, guid: 656e9124dc8b94444ae313e18e20d2b7, type: 3}
   - {fileID: 3981682660695671514, guid: c33e97dbebaa3594babe503871f69b5b, type: 3}
-  normalBrickCount: 8
-  coinCount: 0
+  normalBrickCount: 20
+  coinCount: 25
   brickOneCostCount: 3
   brickTwoCostCount: 5
   blockOneUnlocked: 0
