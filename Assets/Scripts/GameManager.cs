@@ -17,16 +17,12 @@ public class GameManager : MonoBehaviour
     //public int BrickTwoCount = 3;
     public int coinCount;
     public int brickOneCostCount = 3;
-    public int brickTwoCostCount ;
-
+    public int brickTwoCostCount ;   
+    public int ballBounceCountNormal;    
+    public int index;
+    public int totalBallCount;
     public bool blockOneUnlocked;
     public bool blockTwoUnlocked;
-
-    public int ballBounceCountNormal;
-    
-    public int index;
-
-    public int totalBallCount;
 
     private void Awake()
     {
