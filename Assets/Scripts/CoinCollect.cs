@@ -22,6 +22,7 @@ public class CoinCollect : MonoBehaviour
         {
             Destroy(gameObject);
             GameManager.instance.coinCount++;
+            PlayerPrefs.SetInt("Coins", GameManager.instance.coinCount);
         }
     }
 }

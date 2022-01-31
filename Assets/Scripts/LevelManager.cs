@@ -13,6 +13,10 @@ public class LevelManager : MonoBehaviour
     public GameObject gameWon;
     public GameObject gameOver;
     public bool timerStart;
+
+    public LevelTimer timer;
+    public float levelTimer;
+
     void Start()
     {
         isComplete = false;
@@ -21,6 +25,9 @@ public class LevelManager : MonoBehaviour
    
     void Update()
     {
+        levelTimer += Time.deltaTime;
+
+
         if(GameManager.instance.totalBallCount >= objectiveCount)
         {
             timerStart = true;
@@ -40,6 +47,7 @@ public class LevelManager : MonoBehaviour
                 gameWon.SetActive(true);
                 Time.timeScale = 0;
                 Debug.Log("Win Game");
+                timer.timeStamps.Add(levelTimer - Time.time);
             }
             else
             {

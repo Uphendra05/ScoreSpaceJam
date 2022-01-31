@@ -20,12 +20,15 @@ public class UIManager : MonoBehaviour
 
     public PointerEventData data;
     public LevelManager level;
+    public Button brickOneButton;
+    public Button brickTwoButton;
 
     public List<pointerScript> buttonScaling = new List<pointerScript>();
     void Start()
     {
+        BrickOneBought();
+        BrickTwoBought();
         NormalBlockSelected();
-
 
     }
 
@@ -51,7 +54,7 @@ public class UIManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            if (GameManager.instance.blockOneUnlocked == true)
+            if (GameManager.instance.brickOneBought == 1)
             {
                 GameManager.instance.toBuildPrefab = GameManager.instance.allBlockPrefab[1];
                 GameManager.instance.index = 1;
@@ -65,7 +68,7 @@ public class UIManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            if (GameManager.instance.blockTwoUnlocked == true)
+            if (GameManager.instance.brickTwoBought == 1)
             {
                 GameManager.instance.toBuildPrefab = GameManager.instance.allBlockPrefab[2];
                 GameManager.instance.index = 2;
@@ -95,32 +98,32 @@ public class UIManager : MonoBehaviour
 
     public void BlockOneSelected(Button but)
     {
-        
-
-      
-        if (GameManager.instance.coinCount >= GameManager.instance.brickOneCostCount)
-        {
-            if(GameManager.instance.blockOneUnlocked ==false)
-            GameManager.instance.coinCount -= GameManager.instance.brickOneCostCount;
-
-            but.GetComponent<Image>().color = new Color(255, 255, 255, 255);
-            GameManager.instance.blockOneUnlocked = true;
-        }
-        
-
-        if (GameManager.instance.blockOneUnlocked == true)
-        {
-            GameManager.instance.toBuildPrefab = GameManager.instance.allBlockPrefab[1];
-            GameManager.instance.index = 1;
-           
-            timeBlockText.gameObject.SetActive(true);
-            timeBlockPrice.SetActive(false);
-            OnButtonClick(buttonScaling[1]);
-
-        }
-
 
        
+
+        if (GameManager.instance.coinCount >= GameManager.instance.brickOneCostCount)
+        {
+            if(GameManager.instance.brickOneBought == 0)
+            {
+                GameManager.instance.coinCount -= GameManager.instance.brickOneCostCount;
+                PlayerPrefs.SetInt("Coins", GameManager.instance.coinCount);
+
+            }
+
+            but.GetComponent<Image>().color = new Color(255, 255, 255, 255);
+            
+            GameManager.instance.brickOneBought = 1;
+            PlayerPrefs.SetInt("BrickOne", GameManager.instance.brickOneBought);
+           
+
+        }
+
+
+
+        BrickOneBought();
+
+
+
     }
 
     public void BlockTwoSelected(Button but)
@@ -128,26 +131,21 @@ public class UIManager : MonoBehaviour
        
         if (GameManager.instance.coinCount >= GameManager.instance.brickTwoCostCount)
         {
-            if (GameManager.instance.blockTwoUnlocked == false)
+            if (GameManager.instance.brickTwoBought == 0)
+            {
                 GameManager.instance.coinCount -= GameManager.instance.brickTwoCostCount;
+                PlayerPrefs.SetInt("Coins", GameManager.instance.coinCount);
+
+            }
 
             but.GetComponent<Image>().color = new Color(255, 255, 255, 255);
             GameManager.instance.blockTwoUnlocked = true;
-            
-        }
-
-        if (GameManager.instance.blockTwoUnlocked == true)
-        {
-            
-            GameManager.instance.toBuildPrefab = GameManager.instance.allBlockPrefab[2];
-            GameManager.instance.index = 2;
-         
-            slowBlockText.gameObject.SetActive(true);
-            slowBlockPrice.SetActive(false);
-            OnButtonClick(buttonScaling[2]);
-
+            GameManager.instance.brickTwoBought = 1;
+            PlayerPrefs.SetInt("BrickTwo", GameManager.instance.brickTwoBought);
 
         }
+
+        BrickTwoBought();
 
     }
 
@@ -166,8 +164,37 @@ public class UIManager : MonoBehaviour
         
     }
 
+    public void BrickOneBought()
+    {
+        if (GameManager.instance.brickOneBought == 1)
+        {
+            GameManager.instance.toBuildPrefab = GameManager.instance.allBlockPrefab[1];
+            GameManager.instance.index = 1;
+            brickOneButton.GetComponent<Image>().color = new Color(255, 255, 255, 255);
+            timeBlockText.gameObject.SetActive(true);
+            timeBlockPrice.SetActive(false);
+            OnButtonClick(buttonScaling[1]);
 
-  
+        }
+    }
+
+    public void BrickTwoBought()
+    {
+        if (GameManager.instance.brickTwoBought == 1)
+        {
+
+            GameManager.instance.toBuildPrefab = GameManager.instance.allBlockPrefab[2];
+            GameManager.instance.index = 2;
+            brickTwoButton.GetComponent<Image>().color = new Color(255, 255, 255, 255);
+            slowBlockText.gameObject.SetActive(true);
+            slowBlockPrice.SetActive(false);
+            OnButtonClick(buttonScaling[2]);
 
 
-}
+        }
+
+    }
+
+
+
+    }

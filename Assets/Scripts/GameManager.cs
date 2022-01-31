@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
     public bool blockTwoUnlocked;
     public AudioSource popAudio;
 
+    public int brickOneBought;
+    public int brickTwoBought;
+
     private void Awake()
     {
         if(instance==null)
@@ -40,7 +43,22 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        
+        if(PlayerPrefs.HasKey("Coins"))
+        {
+            coinCount = PlayerPrefs.GetInt("Coins");
+        }
+
+        if (PlayerPrefs.HasKey("BrickOne"))
+        {
+            brickOneBought = PlayerPrefs.GetInt("BrickOne");
+        }
+
+        if (PlayerPrefs.HasKey("BrickTwo"))
+        {
+            brickTwoBought = PlayerPrefs.GetInt("BrickTwo");
+        }
+
+
     }
 
     // Update is called once per frame

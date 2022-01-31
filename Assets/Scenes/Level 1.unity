@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -11732,6 +11732,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1103019911}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1121475119 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5807513228930059640, guid: 85c467c0b02917642bdb226bf6d19b88,
+    type: 3}
+  m_PrefabInstance: {fileID: 5807513228574416026}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1123669349
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23201,6 +23213,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2071918771 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5807513230052437928, guid: 85c467c0b02917642bdb226bf6d19b88,
+    type: 3}
+  m_PrefabInstance: {fileID: 5807513228574416026}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2089237496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23438,6 +23462,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5807513228489671140, guid: 85c467c0b02917642bdb226bf6d19b88,
+        type: 3}
+      propertyPath: timer
+      value: 
+      objectReference: {fileID: 11400000, guid: 1db13c7e97095f44f8c986190325b6f0,
+        type: 2}
+    - target: {fileID: 5807513228713927144, guid: 85c467c0b02917642bdb226bf6d19b88,
+        type: 3}
+      propertyPath: buttom
+      value: 
+      objectReference: {fileID: 1121475119}
+    - target: {fileID: 5807513228713927144, guid: 85c467c0b02917642bdb226bf6d19b88,
+        type: 3}
+      propertyPath: brickOneButton
+      value: 
+      objectReference: {fileID: 1121475119}
+    - target: {fileID: 5807513228713927144, guid: 85c467c0b02917642bdb226bf6d19b88,
+        type: 3}
+      propertyPath: brickTwoButton
+      value: 
+      objectReference: {fileID: 2071918771}
+    - target: {fileID: 5807513228885010986, guid: 85c467c0b02917642bdb226bf6d19b88,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5807513229329033854, guid: 85c467c0b02917642bdb226bf6d19b88,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5807513229384755350, guid: 85c467c0b02917642bdb226bf6d19b88,
         type: 3}
       propertyPath: m_Name
@@ -23503,6 +23558,16 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 263699109}
+    - target: {fileID: 5807513230364345296, guid: 85c467c0b02917642bdb226bf6d19b88,
+        type: 3}
+      propertyPath: coinCount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5807513230364345296, guid: 85c467c0b02917642bdb226bf6d19b88,
+        type: 3}
+      propertyPath: blockOneUnlocked
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5807513230559427022, guid: 85c467c0b02917642bdb226bf6d19b88,
         type: 3}
       propertyPath: m_Camera
