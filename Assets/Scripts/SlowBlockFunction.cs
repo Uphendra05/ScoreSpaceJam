@@ -59,9 +59,13 @@ public class SlowBlockFunction : MonoBehaviour
         Timer.Periodic(0.1f, 7, () =>
         {
 
+            if(meshRenderer!=null)
+            {
+                meshRenderer.material.SetColor("_EmissionColor", defaultColor * emissiveIntensity);
+                emissiveIntensity = (emissiveIntensity == defaultIntensityMultiplier) ? blinkIntensityMultiplier : defaultIntensityMultiplier;
+            }
 
-            meshRenderer.material.SetColor("_EmissionColor", defaultColor * emissiveIntensity);
-            emissiveIntensity = (emissiveIntensity == defaultIntensityMultiplier) ? blinkIntensityMultiplier : defaultIntensityMultiplier;
+            
 
 
         });

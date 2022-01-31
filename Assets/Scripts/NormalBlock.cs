@@ -69,9 +69,12 @@ public class NormalBlock : MonoBehaviour
             Timer.Periodic(0.1f, 7, () =>
             {
 
-
-                meshRenderer.material.SetColor("_EmissionColor", defaultColor * emissiveIntensity);
-                emissiveIntensity = (emissiveIntensity == defaultIntensityMultiplier) ? blinkIntensityMultiplier : defaultIntensityMultiplier;
+            if (meshRenderer != null)
+                {
+                    meshRenderer.material.SetColor("_EmissionColor", defaultColor * emissiveIntensity);
+                    emissiveIntensity = (emissiveIntensity == defaultIntensityMultiplier) ? blinkIntensityMultiplier : defaultIntensityMultiplier;
+                }
+               
 
 
             });       

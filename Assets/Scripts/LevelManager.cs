@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -20,12 +21,14 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         isComplete = false;
+        Time.timeScale = 1;
+
     }
 
-   
+
     void Update()
     {
-        levelTimer += Time.deltaTime;
+       
 
 
         if(GameManager.instance.totalBallCount >= objectiveCount)
@@ -47,13 +50,22 @@ public class LevelManager : MonoBehaviour
                 gameWon.SetActive(true);
                 Time.timeScale = 0;
                 Debug.Log("Win Game");
-                timer.timeStamps.Add(levelTimer - Time.time);
+                if(Input.anyKeyDown)
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                }    
+               
+
             }
             else
             {
                 gameOver.SetActive(true);
-                Time.timeScale = 0;
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    SceneManager.LoadScene("Level 1");
 
+                }
+                //  SceneManager.LoadScene(load from first);
                 Debug.Log("Lost");
 
             }
@@ -63,8 +75,11 @@ public class LevelManager : MonoBehaviour
         if (GameManager.instance.totalBallCount <= 0)
         {
             gameOver.SetActive(true);
-            Time.timeScale = 0;
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene("Level 1");
 
+            }
             Debug.Log("Lost Game");
            
         }

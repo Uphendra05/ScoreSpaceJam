@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,8 +23,7 @@ public class GameManager : MonoBehaviour
     public int ballBounceCountNormal;    
     public int index;
     public int totalBallCount;
-    public bool blockOneUnlocked;
-    public bool blockTwoUnlocked;
+    
     public AudioSource popAudio;
 
     public int brickOneBought;
@@ -71,7 +71,33 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-       
-        
+        if(Input.GetKeyDown(KeyCode.F1))
+        {
+            SceneManager.LoadScene("Level 1");
+
+        }
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            SceneManager.LoadScene("Level 2");
+
+        }
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            SceneManager.LoadScene("Level 3");
+
+        }
+        if (Input.GetKeyDown(KeyCode.F4))
+        {
+            SceneManager.LoadScene("Level 4");
+
+        }
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            SceneManager.LoadScene("Level 5");
+
+        }
+
+
+
     }
 }

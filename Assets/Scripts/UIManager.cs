@@ -139,7 +139,7 @@ public class UIManager : MonoBehaviour
             }
 
             but.GetComponent<Image>().color = new Color(255, 255, 255, 255);
-            GameManager.instance.blockTwoUnlocked = true;
+            
             GameManager.instance.brickTwoBought = 1;
             PlayerPrefs.SetInt("BrickTwo", GameManager.instance.brickTwoBought);
 
