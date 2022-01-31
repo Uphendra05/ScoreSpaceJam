@@ -12,11 +12,16 @@ public class UIManager : MonoBehaviour
     public Text slowBlockText;
     public Text coinCountText;
     public Text ballCountText;
+    public Text objectiveText;
 
-    public GameObject normalBlockArrow;
-    public GameObject timeBlockArrow;
-    public GameObject slowBlockArrow;
+    
+    public GameObject timeBlockPrice;
+    public GameObject slowBlockPrice;
+
     public PointerEventData data;
+    public LevelManager level;
+
+    public List<pointerScript> buttonScaling = new List<pointerScript>();
     void Start()
     {
         NormalBlockSelected();
@@ -33,14 +38,14 @@ public class UIManager : MonoBehaviour
         slowBlockText.text = GameManager.instance.slowBrickCount.ToString();
         coinCountText.text = GameManager.instance.coinCount.ToString();
         ballCountText.text = GameManager.instance.totalBallCount.ToString();
+        objectiveText.text = level.objectiveCount.ToString();
 
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             GameManager.instance.toBuildPrefab = GameManager.instance.allBlockPrefab[0];
             GameManager.instance.index = 0;
-            normalBlockArrow.gameObject.SetActive(true);
-            timeBlockArrow.gameObject.SetActive(false);
-            slowBlockArrow.gameObject.SetActive(false);
+           
+            OnButtonClick(buttonScaling[0]);
 
 
         }
@@ -50,9 +55,8 @@ public class UIManager : MonoBehaviour
             {
                 GameManager.instance.toBuildPrefab = GameManager.instance.allBlockPrefab[1];
                 GameManager.instance.index = 1;
-                normalBlockArrow.gameObject.SetActive(false);
-                timeBlockArrow.gameObject.SetActive(true);
-                slowBlockArrow.gameObject.SetActive(false);
+               
+                OnButtonClick(buttonScaling[1]);
 
             }
 
@@ -65,9 +69,8 @@ public class UIManager : MonoBehaviour
             {
                 GameManager.instance.toBuildPrefab = GameManager.instance.allBlockPrefab[2];
                 GameManager.instance.index = 2;
-                normalBlockArrow.gameObject.SetActive(false);
-                timeBlockArrow.gameObject.SetActive(false);
-                slowBlockArrow.gameObject.SetActive(true);
+                
+                OnButtonClick(buttonScaling[2]);
 
             }
 
@@ -85,9 +88,8 @@ public class UIManager : MonoBehaviour
         
         GameManager.instance.toBuildPrefab = GameManager.instance.allBlockPrefab[0];
         GameManager.instance.index = 0;
-        normalBlockArrow.gameObject.SetActive(true);
-        timeBlockArrow.gameObject.SetActive(false);
-        slowBlockArrow.gameObject.SetActive(false);
+        OnButtonClick(buttonScaling[0]);
+
 
     }
 
@@ -110,9 +112,10 @@ public class UIManager : MonoBehaviour
         {
             GameManager.instance.toBuildPrefab = GameManager.instance.allBlockPrefab[1];
             GameManager.instance.index = 1;
-            normalBlockArrow.gameObject.SetActive(false);
-            timeBlockArrow.gameObject.SetActive(true);
-            slowBlockArrow.gameObject.SetActive(false);
+           
+            timeBlockText.gameObject.SetActive(true);
+            timeBlockPrice.SetActive(false);
+            OnButtonClick(buttonScaling[1]);
 
         }
 
@@ -138,12 +141,29 @@ public class UIManager : MonoBehaviour
             
             GameManager.instance.toBuildPrefab = GameManager.instance.allBlockPrefab[2];
             GameManager.instance.index = 2;
-            normalBlockArrow.gameObject.SetActive(false);
-            timeBlockArrow.gameObject.SetActive(false);
-            slowBlockArrow.gameObject.SetActive(true);
+         
+            slowBlockText.gameObject.SetActive(true);
+            slowBlockPrice.SetActive(false);
+            OnButtonClick(buttonScaling[2]);
 
-        }     
 
+        }
+
+    }
+
+
+    public void OnButtonClick(pointerScript button)
+    {
+        for (int i = 0; i < buttonScaling.Count; i++)
+        {
+           
+            buttonScaling[i].SetScale(1);
+
+
+        }
+
+        button.SetScale(1.5f);
+        
     }
 
 

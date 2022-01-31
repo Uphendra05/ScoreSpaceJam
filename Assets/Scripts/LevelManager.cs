@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class LevelManager : MonoBehaviour
     public int objectiveCount;
     public float waitTime;
     public bool isComplete;
+    public Text timerText;
+    public GameObject gameWon;
+    public GameObject gameOver;
+    public bool timerStart;
     void Start()
     {
         isComplete = false;
@@ -18,24 +23,44 @@ public class LevelManager : MonoBehaviour
     {
         if(GameManager.instance.totalBallCount >= objectiveCount)
         {
+            timerStart = true;
+
+        }
+
+        if(timerStart)
+        {
             StartGame();
 
         }
 
-
-        if(isComplete)
+        if (isComplete)
         {
             if (GameManager.instance.totalBallCount >= objectiveCount)
             {
+                gameWon.SetActive(true);
+                Time.timeScale = 0;
                 Debug.Log("Win Game");
             }
             else
             {
+                gameOver.SetActive(true);
+                Time.timeScale = 0;
+
                 Debug.Log("Lost");
+
             }
 
-        }     
-        
+        }
+
+        if (GameManager.instance.totalBallCount <= 0)
+        {
+            gameOver.SetActive(true);
+            Time.timeScale = 0;
+
+            Debug.Log("Lost Game");
+           
+        }
+
     }
 
     public void StartGame()
@@ -48,6 +73,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
+            timerText.text = waitTime.ToString("0.00");
             waitTime -= Time.deltaTime;
 
         }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TimeBlock : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class TimeBlock : MonoBehaviour
     public float defaultIntensityMultiplier = 1.5f;
     public float blinkIntensityMultiplier = 1.25f;
 
+    
+
     private void Start()
     {
         isDestroyed = true;
@@ -32,7 +35,9 @@ public class TimeBlock : MonoBehaviour
 
         if(timeBlockTimer <= 0)
         {
-            Destroy(this.gameObject);
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            Destroy(this.gameObject,0.5f);
 
             if(isDestroyed)
             {

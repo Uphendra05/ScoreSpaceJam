@@ -2,31 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
-public class pointerScript : MonoBehaviour, IPointerClickHandler, IPointerExitHandler
+public class pointerScript : MonoBehaviour
 {
 
-    public RectTransform button;
 
-    private void Start()
+
+
+    public void SetScale(float scale)
     {
-            button.GetComponent<Animator>().SetBool("isScaleUp", false);
+        transform.DOScale(scale, 0.5f);
+       // transform.localScale = Vector3.one * scale;
 
     }
-    public void OnPointerClick(PointerEventData pointerEventData)
-    {
-               
-        if (pointerEventData.button == PointerEventData.InputButton.Left)
-        {
-            button.GetComponent<Animator>().SetBool("isScaleUp", true);
-        }
-    }
 
+    [ContextMenu("ScaleButton")]
+    public void SetDefault()
+    {
+        SetScale(1.5f);
+
+    }
     
-
-    public void OnPointerExit(PointerEventData pointerEventData)
-    {   
-            button.GetComponent<Animator>().SetBool("isScaleUp", false);
-        
-    }
 }

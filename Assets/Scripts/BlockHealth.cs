@@ -40,6 +40,8 @@ public class BlockHealth : MonoBehaviour
 
     public void BlockDie()
     {
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        gameObject.transform.GetChild(0).gameObject.SetActive(true);
         Destroy(this.gameObject,1f);
     }
 

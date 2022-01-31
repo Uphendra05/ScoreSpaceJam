@@ -96,7 +96,7 @@ public class BallMovement : MonoBehaviour
             if (bounceCount == 0)
             {
                 bounceCount = 3;
-
+                GameManager.instance.popAudio.Play();
                 var collisionPoint = other.ClosestPoint(transform.position);
                 var collisionNormal = transform.position - collisionPoint;
                 Vector3 dir = Vector3.Normalize(collisionPoint - transform.position);

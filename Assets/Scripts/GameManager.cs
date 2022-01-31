@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public int totalBallCount;
     public bool blockOneUnlocked;
     public bool blockTwoUnlocked;
+    public AudioSource popAudio;
 
     private void Awake()
     {
