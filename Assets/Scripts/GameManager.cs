@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,7 +28,8 @@ public class GameManager : MonoBehaviour
 
     public int brickOneBought;
     public int brickTwoBought;
-
+    public GameObject rotationConstraint;
+    public ConstraintSource rotationSource;
     private void Awake()
     {
         if(instance==null)
@@ -57,6 +59,10 @@ public class GameManager : MonoBehaviour
         {
             brickTwoBought = PlayerPrefs.GetInt("BrickTwo");
         }
+
+        
+        rotationSource.sourceTransform = rotationConstraint.transform;
+        rotationSource.weight = 1;
 
 
     }

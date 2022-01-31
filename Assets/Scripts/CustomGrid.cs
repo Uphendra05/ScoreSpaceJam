@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.EventSystems;
 
 public class CustomGrid : MonoBehaviour
@@ -75,7 +76,7 @@ public class CustomGrid : MonoBehaviour
                     {
                         GameObject temp = Instantiate(GameManager.instance.toBuildPrefab, new Vector3(structure.transform.position.x, -4.6f, structure.transform.position.z), structure.transform.rotation, blockParent);
                         GameManager.instance.timeBrickCount--;
-
+                        //temp.transform.GetChild(1).GetComponent<RotationConstraint>().AddSource(GameManager.instance.rotationSource);
                     }
 
                     if (GameManager.instance.slowBrickCount > 0 && GameManager.instance.index == 2)

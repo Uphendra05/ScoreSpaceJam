@@ -19,6 +19,7 @@ public class TimeBlock : MonoBehaviour
     public float defaultIntensityMultiplier = 1.5f;
     public float blinkIntensityMultiplier = 1.25f;
 
+    public TextMesh timeText;
     
 
     private void Start()
@@ -32,12 +33,17 @@ public class TimeBlock : MonoBehaviour
     void Update()
     {
         timeBlockTimer -= Time.deltaTime;
+        timeText.text = timeBlockTimer.ToString("0");
+
 
         if(timeBlockTimer <= 0)
         {
             gameObject.GetComponent<MeshRenderer>().enabled = false;
+            gameObject.transform.GetChild(1).gameObject.SetActive(false);
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
-            Destroy(this.gameObject,0.5f);
+            transform.parent.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+            Destroy(transform.parent.gameObject,0.5f);
+
 
             if(isDestroyed)
             {
